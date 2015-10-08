@@ -1,0 +1,19 @@
+%%%-------------------------------------------------------------------
+%%% @author hyunsu
+%%% @copyright (C) 2015, <COMPANY>
+%%% @doc
+%%%
+%%% @end
+%%% Created : 19. 9월 2015 오후 2:55
+%%%-------------------------------------------------------------------
+{application, startfresh, [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib
+  ]},
+  {mod, {startfresh_app, []}},
+  {env, []}
+]}.

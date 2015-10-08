@@ -1,0 +1,9 @@
+{application,startfresh,
+             [{description,[]},
+              {vsn,"1"},
+              {registered,[]},
+              {applications,[kernel,stdlib]},
+              {mod,{startfresh_app,[]}},
+              {env,[]},
+              {modules,[startfresh_app,startfresh_http,startfresh_reloader,
+                        startfresh_sup]}]}.
