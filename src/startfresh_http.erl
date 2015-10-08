@@ -34,13 +34,16 @@ handle(Req, State) ->
 handle(<<"login">>, _, _, Data) ->
   Id = proplists:get_value(<<"id">>, Data),
   Password = proplists:get_value(<<"password">>, Data),
-  case {Id, Password} of
-    {<<"testid">>, <<"testpass">>} ->
+  case ets:lookup(users_list, Id) of
+    [{Id, Password}] ->
       <<"{\"result\":\"ok\"\}">>;
     _ ->
       <<"{\"result\":\"fail\"}">>
   end;
-handle(<<"join">>, _, _, _) ->
+handle(<<"join">>, _, _, Data) ->
+  Id = proplists:get_value(<<"id">>, Data),
+  Password = proplists:get_value(<<"password">>, Data),
+  ets:insert(users_list, {Id, Password}),
   <<"{\"result\":\"join\"}">>;
 handle(<<"hello">>, <<"world">>, _, _) ->
   <<"{\"result\":\"Hello world!\"}">>;

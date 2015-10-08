@@ -57,6 +57,9 @@ start(_StartType, _StartArgs) ->
   %% Code reloader 실행
   startfresh_reloader:start(),
 
+  %% ETS table 생성
+  ets:new(users_list, [public, named_table]),
+
   case startfresh_sup:start_link() of
     {ok, Pid} ->
       io:format("start ok~n"),
